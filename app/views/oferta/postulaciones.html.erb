@@ -1,0 +1,6 @@
+<h1>Postulaciones a la oferta: <%= @oferta.titulo %></h1>
+<ul>
+    <% @postulaciones.each do |postulacion| %>
+        <li><%= postulacion.usuario.nombre %> - <%= postulacion.created_at %></li>
+    <% end %>
+</ul>

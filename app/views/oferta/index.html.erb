@@ -1,0 +1,29 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Oferta</h1>
+
+<div id="oferta">
+  <div class="row">
+    <% @oferta.each do |ofertum| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= ofertum.titulo %></h5>
+            <p class="card-text"><%= ofertum.descripcion %></p>
+            <p class="card-text"><strong>Salario:</strong> <%= ofertum.salario %></p>
+            <p class="card-text"><strong>Horas:</strong> <%= ofertum.horas %></p>
+            <p class="card-text"><strong>Ciudad:</strong> <%= ofertum.ciudad %></p>
+    <p>
+      <%= link_to "Show this ofertum", ofertum, class: "btn btn-success" %>
+      <% if usuario_signed_in? && current_usuario.normal_user? %>
+        <%= link_to "Postularse", postulacion_ofertum_path(ofertum), method: :post, class: "btn btn-primary" %>
+      <% end %>
+    </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to "New ofertum", new_ofertum_path, class:"btn btn-warning" %>

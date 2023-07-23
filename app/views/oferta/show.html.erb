@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+
+
+<h1>Detalles de la oferta</h1>
+<p><strong>Título:</strong> <%= @oferta.titulo %></p>
+<p><strong>Descripción:</strong> <%= @oferta.descripcion %></p>
+<p><strong>Salario:</strong> <%= @oferta.salario %></p>
+<p><strong>Horas:</strong> <%= @oferta.horas %></p>
+<p><strong>Ciudad:</strong> <%= @oferta.ciudad %></p>
+
+<% if usuario_signed_in? && current_usuario.normal_user? %>
+  <%= link_to "Postularse a esta oferta", postularse_oferta_path(@oferta), method: :post, class: "btn btn-primary" %>
+<% end %>
+
+<% if usuario_signed_in? && current_usuario.admin? %>
+  <%= link_to "Ver postulaciones", postulaciones_oferta_path(@oferta), class: "btn btn-secondary" %>
+<% end %>
+<div>
+  <%= link_to "Edit this ofertum", edit_ofertum_path(@ofertum) %> |
+  <%= link_to "Back to oferta", oferta_path %>
+
+  <%= button_to "Destroy this ofertum", @ofertum, method: :delete %>
+</div>
