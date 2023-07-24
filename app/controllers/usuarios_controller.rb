@@ -1,6 +1,10 @@
 class UsuariosController < ApplicationController
   before_action :set_usuario, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_usuario!
+  
+  def postulaciones
+    @postulaciones = current_usuario.postulacions
+  end
   # GET /usuarios or /usuarios.json
   def index
     @usuarios = Usuario.all

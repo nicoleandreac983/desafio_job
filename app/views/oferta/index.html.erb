@@ -16,7 +16,7 @@
     <p>
       <%= link_to "Show this ofertum", ofertum, class: "btn btn-success" %>
       <% if usuario_signed_in? && current_usuario.normal_user? %>
-        <%= link_to "Postularse", postulacion_ofertum_path(ofertum), method: :post, class: "btn btn-primary" %>
+        <%= link_to "Postularse", postularse_ofertum_path(ofertum), method: :post, class: "btn btn-primary" %>
       <% end %>
     </p>
           </div>
@@ -26,4 +26,3 @@
   </div>
 </div>
 
-<%= link_to "New ofertum", new_ofertum_path, class:"btn btn-warning" %>

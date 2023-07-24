@@ -1,5 +1,5 @@
 class Postulacion < ApplicationRecord
   belongs_to :usuario
-  belongs_to :ofertum
+  belongs_to :oferta
 
 end

@@ -8,15 +8,23 @@ class OfertaController < ApplicationController
       redirect_to root_path
     end
   end
-  def postularse
-    @oferta = Ofertum.find(params[:id])
-    current_usuario.ofertas << @oferta if current_usuario.normal_user?
-    redirect_to @oferta, notice: "Te has postulado a esta oferta exitosamente."
-  end
+  
 
+  def postularse
+    @ofertum = Ofertum.find(params[:id])
+    @postulacion = Postulacion.new(usuario: current_usuario, oferta: @ofertum)
+  
+    if @postulacion.save
+      redirect_to @ofertum, notice: '¡Has aplicado a la oferta laboral exitosamente!'
+    else
+      redirect_to @ofertum, alert: 'Hubo un error al postularte a la oferta. Intenta nuevamente.'
+    end
+  end
+  
+  
   def postulaciones
-    @oferta = Ofertum.find(params[:id])
-    @postulaciones = @oferta.postulacion
+    @oferta = Ofertum.find(params[:ofertum_id])
+
   end
   # GET /oferta or /oferta.json
   def index
@@ -25,7 +33,11 @@ class OfertaController < ApplicationController
 
   # GET /oferta/1 or /oferta/1.json
   def show
+    @ofertum= Ofertum.find(params[:id])
+    @postulaciones = @ofertum.postulacions
   end
+  
+
 
   # GET /oferta/new
   def new

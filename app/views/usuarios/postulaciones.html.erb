@@ -1,7 +1,6 @@
-
 <h1>Mis Postulaciones</h1>
 
-<% if @postulaciones.present? %>
+<% if @postulacion.present? %>
     <ul>
         <% @postulaciones.each do |postulacion| %>
         <li>
@@ -13,5 +12,4 @@
     </ul>
     <% else %>
     <p>No has realizado postulaciones.</p>
-<% end %>
-
+    <% end %>
